@@ -1,3 +1,9 @@
+# Images:
+![image](https://github.com/user-attachments/assets/8da2d1ce-2218-4da5-bdab-492eb69a87d2)
+![image](https://github.com/user-attachments/assets/70230974-cbb5-4956-8a25-043a73f0c968)
+![image](https://github.com/user-attachments/assets/16febe21-7389-4413-b0cd-be8e6a2e5bae)
+
+
 # Django Admin Configuration
 
 This Django application configures the admin interface for managing various models related to a daily display system. Below is an overview of the configuration and how to set it up.
