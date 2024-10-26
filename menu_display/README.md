@@ -40,17 +40,30 @@ admin.site.register(Ingredient)
 admin.site.register(DisplaySection)
 admin.site.register(QuantityType)
 admin.site.register(DisplayItem)
+```
+## Setup
+1. Ensure you have Django installed in your environment.
+2. Add the models to your admin.py file as shown above.
+3. Run python manage.py makemigrations and python manage.py migrate to apply any database changes.
+4. Create a superuser using python manage.py createsuperuser to access the admin interface.
+5. Run the development server using python manage.py runserver and navigate to /admin to manage your models.
 
-Setup
-Ensure you have Django installed in your environment.
-Add the models to your admin.py file as shown above.
-Run python manage.py makemigrations and python manage.py migrate to apply any database changes.
-Create a superuser using<vscode_annotation details='%5B%7B%22title%22%3A%22hardcoded-credentials%22%2C%22description%22%3A%22Embedding%20credentials%20in%20source%20code%20risks%20unauthorized%20access%22%7D%5D'> </vscode_annotation>python manage.py createsuperuser to access the admin interface.
+### Summary
+
+- **Do not hardcode credentials**: Always use secure methods to manage sensitive information.
+- **Follow prompts**: When creating a superuser, follow the prompts in the terminal to enter the necessary information securely.
+ 
+**manage.py createsuperuser to access the admin interface.**
+
 Run the development server using python manage.py runserver and navigate to /admin to manage your models.
-Usage
-Navigate to the Django admin interface.
-Manage DailyDisplay entries, including inline DisplayItem instances.
-Use the filters and list display options to easily navigate and manage your data.
-License
+
+## Usage
+
+- **You can just navigate to the Django admin interface.**
+ 
+- **Manage DailyDisplay entries, including inline DisplayItem instances.**
+
+- **Use the filters and list display options to navigate and manage your data easily.**
+### License
 This project is licensed under the MIT License.
 This README provides a clear overview of the admin configuration, setup instructions, and usage guidelines.
