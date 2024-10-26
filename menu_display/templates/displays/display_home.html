@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% comment %} templates/displays/display_home.html {% endcomment %}
+
+
+{% block title %}Menu Display System - Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="period-info">
+        <h1>{{ meal_period }} Menu - {{ current_date|date:"F j, Y" }}</h1>
+    </div>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% else %}
+        <div class="sections-grid">
+            {% for section in sections %}
+                <div class="section-card">
+                    <h2>{{ section.get_name_display }}</h2>
+                    <div class="section-preview">
+                        {% with items=section_items.section %}
+                            {% if items %}
+                                <div class="items-preview">
+                                    {% for item in items|slice:":3" %}
+                                        <div class="preview-item">
+                                            {% if item.menu_item %}
+                                                <img src="{{ item.menu_item.image.url }}" alt="{{ item.menu_item.name }}">
+                                                <p>{{ item.menu_item.title }}</p>
+                                            {% else %}
+                                                <img src="{{ item.ingredient.image.url }}" alt="{{ item.ingredient.name }}">
+                                                <p>{{ item.ingredient.title }}</p>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                {% if items|length > 3 %}
+                                    <p class="more-items">+ {{ items|length|add:"-3" }} more items</p>
+                                {% endif %}
+                            {% else %}
+                                <p class="no-items">No items available</p>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <a href="{% url 'displays:section_display' section.name %}" class="view-section-btn">
+                        View Full Section
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

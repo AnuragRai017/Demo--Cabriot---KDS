@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="display-container">
+    <h1>{{ section.get_name_display }} - {{ meal_period }}</h1>
+    
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% else %}
+        <div class="items-grid">
+            {% for item in display_items %}
+                <div class="display-item">
+                    {% if item.menu_item %}
+                        <img src="{{ item.menu_item.image.url }}" alt="{{ item.menu_item.name }}">
+                        <h2>{{ item.menu_item.title }}</h2>
+                        <p>{{ item.menu_item.name }}</p>
+                    {% else %}
+                        <img src="{{ item.ingredient.image.url }}" alt="{{ item.ingredient.name }}">
+                        <h2>{{ item.ingredient.title }}</h2>
+                        <p>{{ item.ingredient.name }}</p>
+                    {% endif %}
+                    <p class="quantity">
+                        {{ item.quantity }} {{ item.quantity_type.get_unit_display }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    // Auto-refresh the page every 5 minutes
+    setTimeout(function() {
+        location.reload();
+    }, 300000);
+</script>
+{% endblock %}

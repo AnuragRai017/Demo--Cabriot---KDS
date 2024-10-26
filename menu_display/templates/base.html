@@ -1,0 +1,55 @@
+<!-- templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Food Display System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/displays.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="{% url 'displays:home' %}">
+                <i class="fas fa-utensils"></i> Food Display
+            </a>
+        </div>
+        
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+
+        <div class="nav-links">
+            <a href="{% url 'displays:home' %}" class="nav-item {% if request.path == '/' %}active{% endif %}">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="{% url 'displays:main_display' %}" class="nav-item {% if 'main' in request.path %}active{% endif %}">
+                <i class="fas fa-drumstick-bite"></i> Main Course
+            </a>
+            <a href="{% url 'displays:vegetable_display' %}" class="nav-item {% if 'vegetable' in request.path %}active{% endif %}">
+                <i class="fas fa-carrot"></i> Vegetables
+            </a>
+            <a href="{% url 'displays:bread_display' %}" class="nav-item {% if 'bread' in request.path %}active{% endif %}">
+                <i class="fas fa-bread-slice"></i> Bread
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        {% block footer %}
+        <div class="footer-content">
+            <p>&copy; {% now "Y" %} Food Display System. All rights reserved.</p>
+        </div>
+        {% endblock %}
+    </footer>
+
+    <script src="{% static 'js/displays.js' %}"></script>
+</body>
+</html>
